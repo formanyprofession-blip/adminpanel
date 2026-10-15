@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@theme {
+  /* Surface & Background Colors */
+  --color-surface-base: #EEF1F5;
+--color-surface-card: #F6F8F9;
+  --color-surface-hover: #F4F6F9;
+  --color-surface-border: #dbdadae7;
+
+  /* Brand Theme Colors - Teal/Cyan gradient family */
+  --color-brand-primary: #14B8B8;
+  --color-brand-hover: #0F9999;
+  --color-brand-light: #2DD4D4;
+  --color-brand-soft: rgba(20, 184, 184, 0.10);
+
+  /* Gradient (for header/topbar) */
+  --color-brand-gradient-start: #0EA5A5;
+  --color-brand-gradient-end: #1E3A8A;
+
+  /* Typography Colors */
+  --color-content-main: #1E2530;
+  --color-content-sub: #6B7280;
+  --color-content-muted: #9CA3AF;
+
+  /* Accent Status Colors */
+  --color-accent-success: #22C55E;
+  --color-accent-success-soft: rgba(34, 197, 94, 0.10);
+  --color-accent-danger: #EF4444;
+  --color-accent-danger-soft: rgba(239, 68, 68, 0.10);
+  --color-accent-warning: #F59E0B;
+  --color-accent-warning-soft: rgba(245, 158, 11, 0.10);
+  --color-accent-info: #3B82F6;
+  --color-accent-info-soft: rgba(59, 130, 246, 0.10);
+} 
+
+/*
+ * Bridging variables so the classes referenced from tailwind.config.js
+ * (bg-panel-card, text-heading, bg-brand-600, badge-shippedBg, etc.)
+ * resolve to the same palette declared in @theme above.
+ */
+:root {
+  --brand-50: #EEF0FD;
+  --brand-100: var(--color-brand-soft);
+  --brand-500: var(--color-brand-primary);
+  --brand-600: var(--color-brand-hover);
+  --brand-700: #4338CA;
+
+  --panel-bg: var(--color-surface-base);
+  --panel-card: var(--color-surface-card);
+  --panel-sidebar: var(--color-surface-card);
+  --panel-header: var(--color-surface-card);
+  --panel-hover: var(--color-surface-hover);
+
+  --text-heading: var(--color-content-main);
+  --text-body: var(--color-content-main);
+  --text-muted: var(--color-content-sub);
+
+  --badge-pending-bg: var(--color-accent-warning-soft);
+  --badge-pending-text: var(--color-accent-warning);
+  --badge-shipped-bg: var(--color-accent-info-soft);
+  --badge-shipped-text: var(--color-accent-info);
+  --badge-delivered-bg: var(--color-accent-success-soft);
+  --badge-delivered-text: var(--color-accent-success);
+}
+
+body {
+  background-color: var(--color-surface-base);
+  color: var(--color-content-main);
+  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-surface-border);
+  border-radius: 8px;
+}
+
+/* Small reusable component classes to keep JSX tidy without hiding real content behind opaque utility soup */
+.card {
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-surface-border);
+  border-radius: 0.75rem;
+}
+
+.input-field {
+  width: 100%;
+  background-color: var(--color-surface-base);
+  border: 1px solid var(--color-surface-border);
+  color: var(--color-content-main);
+  border-radius: 0.5rem;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+.input-field:focus {
+  border-color: var(--color-brand-primary);
+}
+.input-field::placeholder {
+  color: var(--color-content-muted);
+}
+
+.btn-primary {
+  background-color: var(--color-brand-primary);
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.55rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--color-brand-hover);
+}
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-content-main);
+  border: 1px solid var(--color-surface-border);
+  border-radius: 0.5rem;
+  padding: 0.55rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.15s ease;
+}
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--color-surface-hover);
+}
+
+.btn-danger {
+  background-color: var(--color-accent-danger);
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.55rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.btn-danger:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+}
